@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+
+<configuration>
+
+<!--- global properties -->
+
+<property>
+  <name>fs.defaultFS</name>
+  <value>hdfs://testcluster</value>
+</property>
+
+<property>
+  <name>hadoop.tmp.dir</name>
+  <value>/tmp</value>
+</property>
+
+<!--
+<property>
+  <name>fs.checkpoint.dir</name>
+  <value>/data/sn</value>
+</property>
+
+<property>
+  <name>fs.checkpoint.edits.dir</name>
+  <value>${fs.checkpoint.dir}</value>
+</property>
+-->
+
+<property>
+  <name>fs.checkpoint.period</name>
+  <value>3600</value>
+</property>
+
+<property>
+  <name>fs.checkpoint.size</name>
+  <value>67108864</value>
+</property>
+
+<property>
+  <name>hadoop.native.lib</name>
+  <value>true</value>
+</property>
+
+
+<!-- log properties -->
+<property>
+  <name>hadoop.logfile.size</name>
+  <value>100000000</value>
+</property>
+
+<property>
+  <name>hadoop.logfile.count</name>
+  <value>10</value>
+</property>
+
+<!-- io properties -->
+<property>
+  <name>io.file.buffer.size</name>
+  <value>262144</value>
+</property>  
+
+<property>
+  <name>fs.trash.interval</name>
+  <value>1440</value>
+</property>
+
+<!-- ipc properties -->
+<property>
+  <name>ipc.client.idlethreshold</name>
+  <value>5000</value>
+</property>
+
+<property>
+  <name>ipc.client.kill.max</name>
+  <value>20</value>
+</property>
+
+<property>
+  <name>ipc.client.connection.maxidletime</name>
+  <value>30000</value>
+</property>
+
+<property>
+  <name>ipc.client.connect.max.retries</name>
+  <value>5</value>
+</property>
+
+<property>
+  <name>ipc.server.listen.queue.size</name>
+  <value>256</value>
+</property>
+
+<property>
+  <name>ipc.server.tcpnodelay</name>
+  <value>true</value>
+</property>
+
+<property>
+  <name>ipc.client.tcpnodelay</name>
+  <value>true</value>
+</property>
+
+<!-- impala configuration
+<property>
+  <name>dfs.client.read.shortcircuit</name>
+  <value>true</value>
+</property>
+-->
+
+
+<!-- Web Interface Configuration -->
+<property>
+  <name>webinterface.private.actions</name>
+  <value>true</value>
+</property>
+
+<!-- Proxy Configuration -->
+<property>  
+<name>hadoop.proxyuser.httpfs.hosts</name>  
+<value>*</value>  
+</property>  
+<property>  
+<name>hadoop.proxyuser.httpfs.groups</name>  
+<value>*</value>  
+</property>  
+<property>  
+<name>hadoop.proxyuser.mapred.hosts</name>  
+<value>*</value>  
+</property>  
+<property>  
+<name>hadoop.proxyuser.mapred.groups</name>  
+<value>*</value>  
+</property> 
+ 
+<property>  
+<name>hadoop.proxyuser.hive.hosts</name>  
+<value>*</value>  
+</property>  
+<property>  
+<name>hadoop.proxyuser.hive.groups</name>  
+<value>*</value>  
+</property> 
+<!-- Rack Configuration -->
+
+<!-- HTTP web-consoles Authentication -->
+
+<property>
+        <name>topology.script.file.name</name>
+        <value>/data/nn/RackAware.py</value>
+</property>
+<property>
+        <name>topology.script.number.args</name>
+        <value>20</value>
+</property>  
+
+<property>
+<name>io.compression.codecs</name>
+<value>com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec</value>
+</property>
+<property>
+<name>io.compression.codec.lzo.class</name>
+<value>com.hadoop.compression.lzo.LzoCodec</value>
+</property>
+
+
+</configuration>

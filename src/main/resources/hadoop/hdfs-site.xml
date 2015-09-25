@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Do not modify this file directly.  Instead, copy entries that you -->
+<!-- wish to modify from this file into hdfs-site.xml and change them -->
+<!-- there.  If hdfs-site.xml does not already exist, create it.      -->
+
+<configuration>
+
+<property>
+  <name>dfs.namenode.name.dir</name>
+  <value>/data/nn</value>
+</property>
+
+<property>
+  <name>dfs.namenode.name.edits.dir</name>
+  <value>${dfs.namenode.name.dir}</value>
+</property>
+
+<property>
+  <name>dfs.datanode.data.dir</name>
+  <value>/data/dn</value>
+</property>
+
+<!-- HA -->
+
+<property>
+  <name>dfs.nameservices</name>
+  <value>testcluster</value>
+</property>
+<property>
+  <name>dfs.ha.namenodes.testcluster</name>
+  <value>nn245,nn246</value>
+</property>
+<property>
+  <name>dfs.namenode.rpc-address.testcluster.nn245</name>
+  <value>Master.Hadoop:8001</value>
+</property>
+<property>
+  <name>dfs.namenode.rpc-address.testcluster.nn246</name>
+  <value>Slave1.Hadoop:8001</value>
+</property>
+<property>
+  <name>dfs.namenode.http-address.testcluster.nn245</name>
+  <value>Master.Hadoop:50070</value>
+</property>
+<property>
+  <name>dfs.namenode.http-address.testcluster.nn246</name>
+  <value>Slave1.Hadoop:50070</value>
+</property>
+<property>
+  <name>dfs.journalnode.rpc-address</name>
+  <value>0.0.0.0:8485</value>
+</property>
+<property>
+  <name>dfs.namenode.shared.edits.dir</name>
+  <value>qjournal://Master.Hadoop:8485;Slave1.Hadoop:8485;Slave2.Hadoop:8485/testcluster</value>
+</property>
+<property>
+  <name>dfs.journalnode.edits.dir</name>
+  <value>/data/jn</value>
+</property>
+<property>
+  <name>dfs.namenode.edits.journal-plugin.qjournal</name>
+  <value>org.apache.hadoop.hdfs.qjournal.client.QuorumJournalManager</value>
+</property>
+<property>
+  <name>dfs.client.failover.proxy.provider.testcluster</name>
+  <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+</property>
+<property>
+  <name>dfs.ha.fencing.methods</name>
+  <value>sshfence(hadoop)</value>
+</property>
+<property>
+  <name>dfs.ha.fencing.ssh.private-key-files</name>
+  <value>/tmp/id_rsa</value>
+</property>
+<property>
+<name>dfs.ha.fencing.ssh.connect-timeout</name>
+<value>30000</value>
+</property>
+<property>
+  <name>dfs.ha.automatic-failover.enabled</name>
+  <value>true</value>
+</property>
+<property>
+  <name>ha.zookeeper.quorum</name>
+  <value>Master.Hadoop:2181,Slave1.Hadoop:2181,Slave3.Hadoop:2181</value>
+</property>
+
+
+
+
+<property>
+  <name>dfs.namenode.logging.level</name>
+  <value>all</value>
+</property>
+
+<property>
+  <name>dfs.secondary.http.address</name>
+  <value>0.0.0.0:50090</value>
+</property>
+
+<property>
+  <name>dfs.datanode.address</name>
+  <value>0.0.0.0:50010</value>
+</property>
+
+<property>
+  <name>dfs.datanode.http.address</name>
+</property>
+
+<property>
+  <name>dfs.datanode.ipc.address</name>
+  <value>0.0.0.0:50020</value>
+</property>
+
+<property>
+  <name>dfs.datanode.handler.count</name>
+  <value>4</value>
+</property>
+
+<property>
+  <name>dfs.http.address</name>
+  <value>0.0.0.0:50070</value>
+</property>
+ 
+<property>
+  <name>dfs.datanode.du.reserved</name>
+  <value>10240000000</value>
+</property>
+
+<property>
+  <name>dfs.web.ugi</name>
+  <value>webuser,webgroup</value>
+</property>
+
+<property>
+  <name>dfs.permissions</name>
+  <value>true</value>
+</property>
+
+<property>
+  <name>dfs.permissions.supergroup</name>
+  <value>hadoop</value>
+</property>
+
+
+<property>
+  <name>dfs.datanode.data.dir.perm</name>
+  <value>700</value>
+</property>
+
+<property>
+  <name>dfs.replication</name>
+  <value>2</value>
+</property>
+
+<property>
+  <name>dfs.block.size</name>
+  <value>134217728</value>
+</property>
+
+<property>
+  <name>dfs.namenode.handler.count</name>
+  <value>30</value>
+</property>
+
+<property>
+  <name>dfs.namenode.safemode.threshold.pct</name>
+  <value>0.999f</value>
+</property>
+ 
+<property>
+  <name>dfs.namenode.safemode.min.datanodes</name>
+  <value>2</value>
+</property>
+
+<property>
+  <name>dfs.datanode.balance.bandwidthPerSec</name>
+  <value>31457280</value>
+</property>
+
+<property>
+  <name>dfs.hosts</name>
+  <value>/etc/hadoop/conf/dnbyallow_host.list</value>
+</property>
+
+<property>
+  <name>dfs.hosts.exclude</name>
+  <value>/etc/hadoop/conf/dnbydeny_host.list</value>
+</property> 
+
+<property>
+  <name>dfs.datanode.max.xcievers</name>
+  <value>4096</value>
+</property>
+
+<!-- impala configuration -->
+<property>
+  <name>dfs.datanode.hdfs-blocks-metadata.enabled</name>
+  <value>true</value>
+</property>
+
+<property>
+    <name>dfs.client.use.legacy.blockreader.local</name>
+    <value>false</value>
+</property>
+
+<property>
+    <name>dfs.client.read.shortcircuit</name>
+    <value>true</value>
+</property>
+
+<property>
+    <name>dfs.domain.socket.path</name>
+    <value>/var/run/hadoop-hdfs/dn._PORT</value>
+</property>
+
+<property>
+    <name>dfs.client.file-block-storage-locations.timeout.millis</name>
+    <value>10000</value>
+</property>
+
+<property>
+    <name>dfs.client.read.shortcircuit.skip.checkusm</name>
+    <value>false</value>
+</property>
+
+<property>
+    <name>dfs.client.read.shortcircuit.streams.cache.size</name>
+    <value>256</value>
+</property>
+
+<property>
+    <name>dfs.client.read.shortcircuit.streams.cache.expiry.ms</name>
+    <value>600000</value>
+</property>
+<property>
+    <name>dfs.client.domain.socket.data.traffic</name>
+    <value>true</value>
+</property>
+
+<!-- hue configuration -->
+<!--
+        <property>
+                <name>dfs.namenode.plugins</name>
+                <value>org.apache.hadoop.thriftfs.NamenodePlugin</value>
+        </property>
+
+        <property>
+                <name>dfs.datanode.plugins</name>
+                <value>org.apache.hadoop.thriftfs.DatanodePlugin</value>
+        </property>
+        <property>
+                <name>dfs.thrift.address</name>
+                <value>0.0.0.0:10090</value>
+        </property>
+
+        <property>
+                <name>dfs.webhdfs.enabled</name>
+                <value>true</value>
+        </property>
+-->
+
+
+</configuration>
+
